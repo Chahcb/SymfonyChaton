@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification de {{ proprietaire.prenom }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="example-wrapper">
+            <h1>Changer le prenom et/ou nom de {{ proprietaire.prenom }} {{ proprietaire.nom }}</h1>
+            <div class="alert alert-warning" role="alert">Êtes-vous sûr de vouloir changer le nom et/ou le prenom ?</div>
+            {{ form(formulaire) }}
+            <a href="{{ path("app_home") }}" class="btn btn-warning px-4"><span class="fa-solid fa-backward"></span>  Retour</a>
+        </div>
+    </div>
+{% endblock %}

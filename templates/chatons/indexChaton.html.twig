@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chatons {{ categorie.titre }}{% endblock %}
+
+{% block body %}
+    <div class="px-4 py-5 my-5 text-center">
+        <img src="https://cdn-icons-png.flaticon.com/512/2868/2868271.png" width="50" height="50" alt="logo kittenWorld">
+        <h1 class="display-5 fw-bold">Chatons de la catégorie {{ categorie.titre }}</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">Affichage des photos des chatons de la catégorie {{ categorie.titre }}. {{ categorie.description }}</p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a href="{{ path("app_home") }}" class="btn btn-warning btn-lg px-4 gap-3"><span
+                            class="fa-solid fa-backward"></span> Retour</a>
+                <a href="{{ path("chaton_ajouter") }}" class="btn btn-success btn-lg px-4 gap-3"><span
+                            class="fa-solid fa-plus"></span> Ajouter</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                {% for c in chatons %}
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <img src="{{ asset('Photos/' ~ c.photo) }}" alt="" class="card-img-top">
+                            <div class="card-body">
+                                <h2 class="card-title">{{ c.nom }}</h2>
+                                <a href="{{ path("chaton_modifier",{"id":c.id}) }}" class="btn btn btn-warning">
+                                    <span class="fa-solid fa-pen-to-square"></span></a>
+                                <a href="{{ path("chaton_supprimer",{"id":c.id}) }}" class="btn btn-danger">
+                                    <span class="fa-solid fa-trash-can"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
