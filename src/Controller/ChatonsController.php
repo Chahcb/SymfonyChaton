@@ -34,7 +34,6 @@ class ChatonsController extends AbstractController
     public function ajouterChaton(ManagerRegistry $doctrine, Request $request, SluggerInterface $slugger)
     {
         $chaton = new Chaton();
-
         $form = $this->createForm(ChatonType::class, $chaton);
         $form->handleRequest($request);
 

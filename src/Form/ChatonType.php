@@ -26,12 +26,16 @@ class ChatonType extends AbstractType
                 'choice_label' => 'titre', // choix de ce qui sera affiché comme texte
                 'multiple' => false,
                 'expanded' => false])
-            ->add('Proprietaire', EntityType::class, [
-                'class' => Proprietaire::class, // choix de la classe liée
+            ->add('Proprietaire', EntityType::class, array(
+                'class' => Proprietaire::class,
                 'choice_label' => 'prenom', // choix de ce qui sera affiché comme texte
-                'mapped' => false, // pour ajouter un champs qui n'est pas dans la table
-                'multiple' => false,
-                'expanded' => false])
+                'mapped' => false,
+                'multiple' => true,
+                'expanded' => true,
+                'choice_attr' => function($val, $key, $index) {
+                    return array('required' => false);
+                },
+            ))
 
             ->add('OK', SubmitType::class, ['label' => 'OK',
                 'attr' => ['class' => 'btn btn-primary px-5']]);
